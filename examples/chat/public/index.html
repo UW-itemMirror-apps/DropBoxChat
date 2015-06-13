@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DropBox Chat Client</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  
+  
+  
+  <script type="text/javascript">
+  
+  // var dropboxKey = "NaqDWUBmg/A=|Sxa2dXDsajRxDpP6IJAaHyrTrhcp9zY3w6rj58fHMw==";
+ var dropboxKey = "lSajT1cgXAA=|gElW6fAtZuQ+uMxiSlE18TjbIbZkiVeWxFhEd7zANQ==";
+  
+
+
+  $(document).ready(function(){
+    $('#auth-info').hide();
+  });
+
+  function dropboxLoginSuccess(userInfo) {
+    //implement your custom code after successful login ----------
+    //displaying user info here ----------------------------------
+
+document.getElementById("w1").innerHTML = "Welcome "+ userInfo.name + " to Dropbox Chat !!";
+document.getElementById("w2").innerHTML = "Please press Enter to Continue";
+//     $('#auth-info').show();
+//     $('#dropbox-uid').val(userInfo.uid);
+//     $('#dropbox-name').val(userInfo.name);
+//     $('#dropbox-email').val(userInfo.email);
+//     $('#dropbox-countryCode').val(userInfo.countryCode);
+//     $('#dropbox-quota').val((userInfo.quota/1024/1024/1024).toFixed(5) + " GB");
+//     $('#dropbox-usedQuota').val((userInfo.usedQuota/1024/1024/1024).toFixed(5) + " GB");
+//     $('#dropbox-sharedBytes').val((userInfo.sharedBytes/1024/1024/1024).toFixed(5) + " GB");
+//     $('#dropbox-folders').val(userInfo.show());
+//     alert("On this line");
+//     document.getElementById("waah").innerHTML = "Logged in! Press enter to continue";
+// alert("Passed that line");
+$('#dropbox-name').val(userInfo.name);
+  }
+
+  function dropboxLogoutSuccess() {
+    //implement your custom code after successful logout ----------
+    alert("You have been logged out");
+    location.reload();
+    $('#auth-info').hide();
+  }
+    
+
+  </script>
+  
+
+</head>
+<body>
+
+  <div class="container">
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now Chat on your DropBox !</h1>
+    <div style="text-align: center"><img src="dropboxicon.jpg" width="100" /></div>
+    <!-- <h3>Install login with Dropbox on your Website - OAuth Authentication - jQuery plugin</h3> -->
+     <div style="text-align: center">
+    <button type ="button"  id="dropbox-auth-button" class="my-button-style" >loading..</button>
+    </div>
+    <!-- <div id="auth-info">
+      <br/><br/>
+      <b>Id: </b><input type="text" id="dropbox-uid" disabled/><br/>
+      <b>Email: </b><input type="text" id="dropbox-email" disabled/><br/>       
+      <b>Name: </b><input type="text" id="dropbox-name" disabled/><br/>
+      <b>Country code: </b><input type="text" id="dropbox-countryCode" disabled/><br/>
+      <b>Total quota: </b><input type="text" id="dropbox-quota" disabled/><br/>       
+      <b>Used quota: </b><input type="text" id="dropbox-usedQuota" disabled/><br/>
+      <b>Shared quota: </b><input type="text" id="dropbox-sharedBytes" disabled/><br/>
+      <b>Folders: </b><input type="text" id="dropbox-folders" disabled><br/>
+      <br/><br/>          
+    </div> -->
+    <br>
+    
+    
+  </div>
+
+  <ul class="pages">
+<li class="chat page">
+      <div class="chatArea">
+        <input class="usernameInput" type="text" id="dropbox-name" disabled style="align:middle";/>
+
+        <ul class="messages"></ul>
+      </div>
+      <input class="inputMessage" placeholder="Type here..."/>
+
+    </li>
+
+    <li class="login page">
+      <div class="form">
+        <h3 class="title" id="w1">Welcome to the DropboxChat application.</h3>
+          <h3 class="title" id="w2">This application uses Dropbox authentication to login.</h3>
+        <!-- <input class="usernameInput" type="text" maxlength="14" /> -->
+      </div>
+    </li>
+
+
+
+  </ul> 
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/main.js"></script>
+  <script src="/dropboxAuth.min.js"></script>
+</body>
+</html>
